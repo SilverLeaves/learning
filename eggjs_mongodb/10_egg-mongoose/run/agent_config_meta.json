@@ -1,0 +1,236 @@
+{
+  "keys": "D:\\fushion\\summary\\egg_mongoose\\config\\config.default.js",
+  "mongoose": {
+    "url": "D:\\fushion\\summary\\egg_mongoose\\config\\config.default.js",
+    "options": "D:\\fushion\\summary\\egg_mongoose\\config\\config.default.js"
+  },
+  "session": {
+    "maxAge": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-session\\config\\config.default.js",
+    "key": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-session\\config\\config.default.js",
+    "httpOnly": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-session\\config\\config.default.js",
+    "encrypt": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-session\\config\\config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+    "protocolWhiteList": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+    "defaultMiddleware": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+    "csrf": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "useSession": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "ignoreJSON": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "cookieName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "sessionName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "headerName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "bodyName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "queryName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xframe": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.local.js",
+      "maxAge": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "includeSubdomains": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "value": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js",
+      "policy": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "callback": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-jsonp\\config\\config.default.js",
+    "csrf": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-i18n\\config\\config.default.js",
+    "dirs": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-i18n\\config\\config.default.js",
+    "queryField": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieField": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-watcher\\config\\config.default.js",
+      "development": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-watcher\\config\\config.default.js"
+    }
+  },
+  "multipart": {
+    "autoFields": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "defaultCharset": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fieldSize": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fields": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileSize": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "files": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "fileExtensions": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js",
+    "whitelist": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-multipart\\config\\config.default.js"
+  },
+  "development": {
+    "watchDirs": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-development\\config\\config.default.js",
+    "ignoreDirs": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-development\\config\\config.default.js",
+    "fastReady": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-development\\config\\config.default.js",
+    "reloadOnDebug": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-development\\config\\config.default.js",
+    "overrideDefault": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxFiles": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js",
+    "maxDays": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js",
+    "dir": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js",
+    "dynamic": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js",
+    "preload": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js",
+    "buffer": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js",
+    "maxFiles": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-view\\config\\config.default.js",
+    "cache": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-view\\config\\config.local.js",
+    "defaultExtension": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-view\\config\\config.default.js",
+    "defaultViewEngine": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-view\\config\\config.default.js",
+    "mapping": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg-view\\config\\config.default.js"
+  },
+  "env": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "name": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "proxy": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "protocolHeaders": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "ipHeaders": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "hostHeaders": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "pkg": {
+    "name": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "version": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "description": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "main": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "scripts": {
+      "dev": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "test": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    },
+    "author": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "license": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "dependencies": {
+      "egg": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "egg-mongoose": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "egg-static": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "egg-bin": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "baseDir": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "HOME": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "rundir": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "notFound": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "sitefile": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "middlewares": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "httpClient": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "formLimit": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "jsonLimit": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "strict": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "depth": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "parameterLimit": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "encoding": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "env": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "level": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "consoleLevel": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "outputJSON": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "buffer": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "appLogName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "coreLogName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "agentLogName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "errorLogName": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "dnsCacheMaxAge": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "request": {
+      "timeout": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "freeSocketKeepAliveTimeout": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "maxSockets": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "maxFreeSockets": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+    "logging": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "workerStartTimeout": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "port": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js",
+      "hostname": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "responseTimeout": "D:\\fushion\\summary\\egg_mongoose\\node_modules\\egg\\config\\config.default.js"
+  }
+}

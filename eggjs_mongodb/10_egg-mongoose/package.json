@@ -1,0 +1,20 @@
+{
+  "name": "eggegg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "egg-bin dev",
+    "test": "egg-bin test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.1.0",
+    "egg-mongoose": "^2.1.1",
+    "egg-static": "^2.1.0"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.3.7"
+  }
+}
