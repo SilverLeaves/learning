@@ -1,0 +1,6 @@
+[package]
+name = "p02_cargo_new"
+version = "0.1.0"
+authors = ["SilverLeaves <autumnsilverleaves@gmail.com>"]
+
+[dependencies]

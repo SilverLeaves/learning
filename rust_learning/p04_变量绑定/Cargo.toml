@@ -1,0 +1,6 @@
+[package]
+name = "p04_变量绑定"
+version = "0.1.0"
+authors = ["SilverLeaves <autumnsilverleaves@gmail.com>"]
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "p05_函数"
+version = "0.1.0"
+authors = ["SilverLeaves <autumnsilverleaves@gmail.com>"]
+
+[dependencies]
