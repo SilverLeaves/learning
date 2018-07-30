@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+</head>
+
+<body>
+    <input type="text" name="" id="sendText">
+    <button id="sendBtn">发送</button>
+    <p id="recv"></p>
+    <script type="text/javascript">
+        // 实例化一个WebSocket，并连接到ws://echo.websocket.org/测试一下
+        var websocket = new WebSocket("ws://echo.websocket.org/");
+        websocket.onopen = () => {
+            console.log("websocket open")
+            document.getElementById("recv").innerHTML = "已连接"
+        }
+
+        // 注意，下面用的都是等于号，不是回调函数。
+        // 使用了ES6语法
+        websocket.onclose = () => {
+            console.log("websocket close")
+            document.getElementById("recv").innerHTML = "已断开连接"
+        }
+
+        websocket.onmessage = (e) => {
+            console.log("message" + e.data)
+            document.getElementById("recv").innerHTML = e.data;
+        }
+
+        document.getElementById("sendBtn").onclick = () => {
+            websocket.send(document.getElementById("sendText").value)
+        }
+    </script>
+</body>
+
+</html>
