@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>16音律-SilverMusic</title>
+</head>
+
+<body style="background-color: aliceblue;">
+    <div style="text-align: center;">
+        <h1> 十六音律下的两只老虎</h1>
+    </div>
+
+    <button id="button" style="width: 100%;height: 300px;border: 0px;background-color: azure;">点击以生成下一个音符</button>
+    <div style="text-align: center;">
+        <ul>
+            <li>十六音律是将一个音高区间分为16个半音，即就一个音高区间有8个全音</li>
+            <li>这里的声音是三角波实时生成的，声音的质量依赖于浏览器的支持</li>
+            <li>建议使用微信内置浏览器或火狐浏览器尝试，以获得尽可流畅的体验</li>
+        </ul>
+        <footer>Power by Silver湫曗</footer>
+    </div>
+    <script>
+        // 按钮元素
+        var eleButton = document.getElementById('button');
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        // 创建音频上下文 ，audioCtx音频环境
+        var audioCtx = new AudioContext();
+        // 发出的声音频率数据，表现为音调的高低
+        var arrFrequency = [
+            523.25, 595.87, 649.80, 523.25,
+            523.25, 595.87, 649.80, 523.25,
+
+            649.80, 708.62, 772.75,
+            649.80, 708.62, 772.75,
+
+            772.75, 880.00, 772.75, 708.62, 649.80, 523.25,
+            772.75, 880.00, 772.75, 708.62, 649.80, 523.25,
+
+            523.25, 386.38, 523.25,
+            523.25, 386.38, 523.25,
+        ];
+        // 音调依次递增或者递减处理需要的参数
+        var start = 0,
+            direction = 1;
+
+        var mergerToDest = audioCtx.createChannelMerger(1);
+        mergerToDest.connect(audioCtx.destination);
+
+        const player = function () {
+            // 当前频率
+            var frequency = arrFrequency[start];
+            // 如果到头，重新开始
+            if (!frequency) {
+                start = 0;
+                frequency = arrFrequency[start];
+            }
+            // 改变索引，下一次播放时候使用
+            start = start + direction;
+
+            // 创建一组OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
+            var oscillator1 = audioCtx.createOscillator();
+            var oscillator2 = audioCtx.createOscillator();
+            var oscillator3 = audioCtx.createOscillator();
+            var oscillator4 = audioCtx.createOscillator();
+            var oscillator5 = audioCtx.createOscillator();
+            var oscillator6 = audioCtx.createOscillator();
+            // 创建一组GainNode,它可以控制音频的音量
+            var gainNode1 = audioCtx.createGain();
+            var gainNode2 = audioCtx.createGain();
+            var gainNode3 = audioCtx.createGain();
+            var gainNode4 = audioCtx.createGain();
+            var gainNode5 = audioCtx.createGain();
+            var gainNode6 = audioCtx.createGain();
+
+            // 创建一个混合节点
+            var merger = audioCtx.createChannelMerger(1);
+
+            // 把音量，音调、混合和输出终节点按顺序进行关联
+            oscillator1.connect(gainNode1);
+            oscillator2.connect(gainNode2);
+            oscillator3.connect(gainNode3);
+            oscillator4.connect(gainNode4);
+            oscillator5.connect(gainNode3);
+            oscillator6.connect(gainNode4);
+
+            gainNode1.connect(merger)
+            gainNode2.connect(merger)
+            gainNode3.connect(merger)
+            gainNode4.connect(merger)
+            gainNode5.connect(merger)
+            gainNode6.connect(merger)
+
+            merger.connect(mergerToDest)
+
+            // 设置，波形，频率
+            oscillator1.type = 'sine';
+            oscillator2.type = 'sine';
+            oscillator3.type = 'sine';
+            oscillator4.type = 'sine';
+            oscillator5.type = 'sine';
+            oscillator6.type = 'sine';
+            // 设置当前播放声音的频率，也就是最终播放声音的调调
+            oscillator1.frequency.value = frequency * 1;
+            oscillator2.frequency.value = frequency * 2;
+            oscillator3.frequency.value = frequency * 3;
+            oscillator4.frequency.value = frequency * 4;
+            oscillator5.frequency.value = frequency * 5;
+            oscillator6.frequency.value = frequency * 6;
+            // 当前时间设置音量为0
+            gainNode1.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode2.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode3.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode4.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode5.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode6.gain.setValueAtTime(0, audioCtx.currentTime);
+            // 0.01秒后音量为1
+            gainNode1.gain.linearRampToValueAtTime(0.9878, audioCtx.currentTime + 0.01);
+            gainNode2.gain.linearRampToValueAtTime(0.3686, audioCtx.currentTime + 0.01);
+            gainNode3.gain.linearRampToValueAtTime(0.6202, audioCtx.currentTime + 0.01);
+            gainNode4.gain.linearRampToValueAtTime(0.4839, audioCtx.currentTime + 0.01);
+            gainNode5.gain.linearRampToValueAtTime(0.1567, audioCtx.currentTime + 0.01);
+            gainNode6.gain.linearRampToValueAtTime(0.0836, audioCtx.currentTime + 0.01);
+            // 音调从当前时间开始播放
+            oscillator1.start(audioCtx.currentTime);
+            oscillator2.start(audioCtx.currentTime);
+            oscillator3.start(audioCtx.currentTime);
+            oscillator4.start(audioCtx.currentTime);
+            oscillator5.start(audioCtx.currentTime);
+            oscillator6.start(audioCtx.currentTime);
+            // 1秒内声音慢慢降低，是个不错的停止声音的方法
+            gainNode1.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode3.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode4.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode5.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode6.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            // 1秒后完全停止声音
+            oscillator1.stop(audioCtx.currentTime + 1);
+            oscillator2.stop(audioCtx.currentTime + 1);
+            oscillator3.stop(audioCtx.currentTime + 1);
+            oscillator4.stop(audioCtx.currentTime + 1);
+            oscillator5.stop(audioCtx.currentTime + 1);
+            oscillator6.stop(audioCtx.currentTime + 1);
+
+            //-------------------------------------------- 
+            // 第二组
+            // 
+
+            // 创建一组OscillatorNode, 它表示一个周期性波形（振荡），基本上来说创造了一个音调
+            var oscillator21 = audioCtx.createOscillator();
+            var oscillator22 = audioCtx.createOscillator();
+            var oscillator23 = audioCtx.createOscillator();
+            var oscillator24 = audioCtx.createOscillator();
+            var oscillator25 = audioCtx.createOscillator();
+            var oscillator26 = audioCtx.createOscillator();
+            // 创建一组GainNode,它可以控制音频的音量
+            var gainNode21 = audioCtx.createGain();
+            var gainNode22 = audioCtx.createGain();
+            var gainNode23 = audioCtx.createGain();
+            var gainNode24 = audioCtx.createGain();
+            var gainNode25 = audioCtx.createGain();
+            var gainNode26 = audioCtx.createGain();
+
+            // 创建一个混合节点
+            var merger2 = audioCtx.createChannelMerger(1);
+
+            // 把音量，音调、混合和输出终节点按顺序进行关联
+            oscillator21.connect(gainNode21);
+            oscillator22.connect(gainNode22);
+            oscillator23.connect(gainNode23);
+            oscillator24.connect(gainNode24);
+            oscillator25.connect(gainNode23);
+            oscillator26.connect(gainNode24);
+
+            gainNode21.connect(merger2)
+            gainNode22.connect(merger2)
+            gainNode23.connect(merger2)
+            gainNode24.connect(merger2)
+            gainNode25.connect(merger2)
+            gainNode26.connect(merger2)
+
+            merger2.connect(mergerToDest)
+
+            // 设置，波形，频率
+            oscillator21.type = 'sine';
+            oscillator22.type = 'sine';
+            oscillator23.type = 'sine';
+            oscillator24.type = 'sine';
+            oscillator25.type = 'sine';
+            oscillator26.type = 'sine';
+            // 设置当前播放声音的频率，也就是最终播放声音的调调
+            oscillator21.frequency.value = frequency * 7;
+            oscillator22.frequency.value = frequency * 8;
+            oscillator23.frequency.value = frequency * 9;
+            oscillator24.frequency.value = frequency * 10;
+            oscillator25.frequency.value = frequency * 11;
+            oscillator26.frequency.value = frequency * 12;
+            // 当前时间设置音量为0
+            gainNode21.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode22.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode23.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode24.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode25.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode26.gain.setValueAtTime(0, audioCtx.currentTime);
+            // 0.01秒后音量为1
+            gainNode21.gain.linearRampToValueAtTime(0.1201, audioCtx.currentTime + 0.01);
+            gainNode22.gain.linearRampToValueAtTime(0.0707, audioCtx.currentTime + 0.01);
+            gainNode23.gain.linearRampToValueAtTime(0.0053, audioCtx.currentTime + 0.01);
+            gainNode24.gain.linearRampToValueAtTime(0.0244, audioCtx.currentTime + 0.01);
+            gainNode25.gain.linearRampToValueAtTime(0.0273, audioCtx.currentTime + 0.01);
+            gainNode26.gain.linearRampToValueAtTime(0.0213, audioCtx.currentTime + 0.01);
+            // 音调从当前时间开始播放
+            oscillator21.start(audioCtx.currentTime);
+            oscillator22.start(audioCtx.currentTime);
+            oscillator23.start(audioCtx.currentTime);
+            oscillator24.start(audioCtx.currentTime);
+            oscillator25.start(audioCtx.currentTime);
+            oscillator26.start(audioCtx.currentTime);
+            // 1秒内声音慢慢降低，是个不错的停止声音的方法
+            gainNode21.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode22.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode23.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode24.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode25.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            gainNode26.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 1);
+            // 1秒后完全停止声音
+            oscillator21.stop(audioCtx.currentTime + 1);
+            oscillator22.stop(audioCtx.currentTime + 1);
+            oscillator23.stop(audioCtx.currentTime + 1);
+            oscillator24.stop(audioCtx.currentTime + 1);
+            oscillator25.stop(audioCtx.currentTime + 1);
+            oscillator26.stop(audioCtx.currentTime + 1);
+        }
+        // 鼠标hover我们的按钮的时候
+        document.onkeydown = player;
+        eleButton.onclick = player;
+    </script>
+</body>
+
+</html>
