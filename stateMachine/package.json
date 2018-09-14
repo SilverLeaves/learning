@@ -1,0 +1,18 @@
+{
+  "name": "statemachine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "javascript-state-machine": "^3.1.0"
+  },
+  "dependencies": {
+    "dagre": "^0.8.2",
+    "dagre-d3": "^0.6.1"
+  }
+}
