@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面</title>
+    <!-- 引入Vue -->
+    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <template v-for="item in button">
+                <el-button @click="item.fn()">{{item.name}}</el-button>
+            </template>
+
+        </el-container>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    button: [{
+                        name: '按钮1', fn: this.delete1
+                    }, {
+                        name: '按钮2', fn: this.delete2
+                    },
+                    {
+                        name: '按钮3', fn: this.delete3
+                    }]
+                }
+            },
+            methods: {
+                delete1: function (val) {
+                    alert('1')
+                },
+                delete2: function (val) {
+                    alert('1')
+                },
+                delete3: function (val) {
+                    alert('1')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
