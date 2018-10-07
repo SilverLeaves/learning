@@ -78,3 +78,6 @@ Cargo.lock
 
 # rust依赖锁定文件
 Cargo.lock
+
+# electron-build打包文件
+/electron/test/dist/
