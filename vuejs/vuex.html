@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/index.js"></script>
+    <link href="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/theme-chalk/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{data}}</h1>
+    </div>
+
+    <script>
+        // 数据仓库
+        const store = new Vuex.Store({
+            state: {
+                myData: "",
+            },
+            mutations: {
+                update(state, payload) {
+                    state.myData = payload.data
+                }
+            }
+        });
+        // Vue实例
+        var myApp = new Vue({
+            el: "#app",
+            store,
+            data() {
+                return {
+                }
+            },
+            computed: {
+                data() {
+                    return this.$store.state.myData;
+                }
+            }
+        })
+        // 被动更新数据的API
+        var update = (data) => {
+            store.commit({
+                type: "update",
+                data
+            })
+        }
+        // 主动调用异步接口的API
+        var updateAsync=async ()=>{
+            let response=await cefCompent.test("测试");
+            update(response);
+        }
+
+        // 调用示例
+        // 1.被动调用示例，传值进来
+        update("mmp")
+        // 2.主动调用同步接口示例
+        update(cefCompent.test("测试"));
+        // 3.主动调用异步接口示例
+        updateAsync();
+    </script>
+</body>
+
+</html>

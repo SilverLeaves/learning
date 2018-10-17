@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/dist/vue.js"></script>
+    <link href="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/theme-chalk/index.css" rel="stylesheet">
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 可以隐藏输入标签，通过其它方式来触发这个标签的click事件 -->
+        <input type="file" id="fileElem" @change="show" :files="list" multiple style="display:none">
+
+        <label for="fileElem">Select some files</label>
+
+        <el-button type="" @click="send">点我一下试试</el-button>
+
+        <el-carousel :interval="4000" type="card" height="10">
+            <el-carousel-item v-for="item in list" :key="item">
+                <img :src="item" alt="无">
+            </el-carousel-item>
+        </el-carousel>
+
+      
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    list: [],
+                    images:[]
+                }
+            },
+            methods: {
+                show(data) {
+
+                    this.list.forEach((element) => {
+                        window.URL.revokeObjectURL(element.src);
+                    })
+
+                    this.list = []
+
+                    console.log("files" + data.target.files);
+
+                    var fileList = [];
+
+                    for (var i = 0; i < data.target.files.length; i++) {
+                        fileList.push(data.target.files[i])
+                    }
+                    console.log("filesList" + fileList);
+
+                    fileList.forEach(element => {
+                        this.list.push(window.URL.createObjectURL(element))
+                    });
+                    console.log();
+                    
+                },
+                send() {
+                    // var imgs = document.querySelectorAll(".obj");
+                    // console.log(imgs);
+
+                    // for (var i = 0; i < imgs.length; i++) {
+                    //     new FileUpload(imgs[i], imgs[i].file);
+                    // }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
