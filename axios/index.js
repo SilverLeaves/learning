@@ -1,19 +1,28 @@
 var axios = require("axios")
 
-async function test() {
+async function login() {
     try {
-        let res = await axios.post("http://localhost:7001/user/token", {
-            "username": "admin",
-            "password": "123456",
-            "clientId": "my_app",
-            "clientSecret": "my_secret"
-        })
-        console.log(res);
+        var formData = {
+            username: "abc@qq.com",
+            password: "123456",
+        }
+        var formdataString = '';
+        for (const key in formData) {
+            if (formData.hasOwnProperty(key)) {
+                const element = formData[key];
+                formdataString += key + "=" + element + "&";
+            }
+        }
+        let response = await axios.post(
+            "http://106.14.219.21:8082/userLogin",
+            formdataString, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+        console.log(response.data);
     } catch (error) {
         console.log(error);
-
     }
 }
-
-
-test()
+login()
