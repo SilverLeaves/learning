@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/index.js"></script>
+    <link href="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/theme-chalk/index.css" rel="stylesheet">
+    <style>
+        .image {
+            width: 100%;
+            display: block;
+        }
+    </style>
+    <style>
+        .demo-table-expand {
+              font-size: 0;
+            }
+            .demo-table-expand label {
+              width: 90px;
+              color: #99a9bf;
+            }
+            .demo-table-expand .el-form-item {
+              margin-right: 0;
+              margin-bottom: 0;
+              width: 50%;
+            }
+          </style>
+</head>
+
+<body style="margin: 0;">
+    <div id="app">
+        <!-- 显示结果 -->
+        <el-container>
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="全部族" name="first" style="height: calc(100vh - 55px);overflow: auto;">
+                    <el-container>
+                        <el-main style="padding:0px">
+                            <el-row :gutter="20" style="margin-left: 0px; margin-right: 0px;height: calc(100vh - 55px);overflow: auto;">
+                                <el-col :xs="24" :sm="12" :md="8" :lg="6" :xl="4" v-for="(o, index) in 31" :key="o">
+                                    <el-card :body-style="{ padding: '0px' }">
+                                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539857631264&di=8787dd6092b5c8c9dd48a7c44eaf277a&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F267f9e2f070828382fb60094b899a9014d08f1f3.jpg"
+                                            class="image">
+                                        <div style="padding: 14px;">
+                                            <span>我是SPU</span>
+                                            <div class="bottom clearfix">
+                                                <el-button type="text" class="button">查看族</el-button>
+                                            </div>
+                                        </div>
+                                    </el-card>
+                                </el-col>
+                            </el-row>
+                        </el-main>
+
+                        <el-aside width="35%">
+                            <el-table :data="tableData5" style="width: 100%;height: calc(100vh - 116px);overflow: auto">
+                                <el-table-column type="selection" width="30">
+                                </el-table-column>
+                                <el-table-column type="expand">
+                                    <template slot-scope="props">
+                                        <el-form label-position="left" inline class="demo-table-expand">
+                                            <el-form-item label="族类型">
+                                                <span>{{ props.row.name }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="主要参数">
+                                                <span>{{ props.row.shop }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="编码">
+                                                <span>{{ props.row.id }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="ID">
+                                                <span>{{ props.row.shopId }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="商品分类">
+                                                <span>{{ props.row.category }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="店铺地址">
+                                                <span>{{ props.row.address }}</span>
+                                            </el-form-item>
+                                            <el-form-item label="商品描述">
+                                                <span>{{ props.row.desc }}</span>
+                                            </el-form-item>
+                                        </el-form>
+                                    </template>
+                                </el-table-column>
+                                <el-table-column label="族类型" prop="id">
+                                </el-table-column>
+                                <el-table-column label="主要参数" prop="name">
+                                </el-table-column>
+                                <el-table-column label="描述" prop="desc">
+                                </el-table-column>
+                            </el-table>
+                            <div style="margin-top: 20px">
+                                <el-button @click="load">确认载入</el-button>
+                                <el-button>取消</el-button>
+                            </div>
+                        </el-aside>
+                    </el-container>
+                </el-tab-pane>
+                <el-tab-pane label="常用族" name="second">常用族</el-tab-pane>
+                <el-tab-pane label="我的收藏" name="third">我的收藏</el-tab-pane>
+            </el-tabs>
+        </el-container>
+    </div>
+
+    <script>
+        // 数据仓库
+        const store = new Vuex.Store({
+            state: {
+                myData: [],
+
+            },
+            mutations: {
+                update(state, payload) {
+                    state.myData = payload.data
+                },
+                updateResult(state, payload) {
+                    // console.log(payload.data);
+                    payload.data.forEach(element => {
+                        const index = state.myData.findIndex(ele => {
+                            // console.log(ele.familyUUID+element.familyUUID);
+                            return ele.familyUUID == element.familyUUID
+                        })
+                        if (index >= 0) {
+                            state.myData[index].state = "载入成功"
+                        } else {
+                            console.log("error:" + index + "未找到");
+                        }
+                    })
+                },
+            }
+        });
+        // Vue实例
+        let myApp = new Vue({
+            el: "#app",
+            store,
+            data() {
+                return {
+                    multipleSelection: [],
+                    activeName: 'first',
+                    tableData5: [{
+                        id: '12987122',
+                        name: '好滋好味鸡蛋仔',
+                        category: '江浙小吃、小吃零食',
+                        desc: '荷兰优质淡奶，奶香浓而不腻',
+                        address: '上海市普陀区真北路',
+                        shop: '王小虎夫妻店',
+                        shopId: '10333'
+                    }, {
+                        id: '12987123',
+                        name: '好滋好味鸡蛋仔',
+                        category: '江浙小吃、小吃零食',
+                        desc: '荷兰优质淡奶，奶香浓而不腻',
+                        address: '上海市普陀区真北路',
+                        shop: '王小虎夫妻店',
+                        shopId: '10333'
+                    }, {
+                        id: '12987125',
+                        name: '好滋好味鸡蛋仔',
+                        category: '江浙小吃、小吃零食',
+                        desc: '荷兰优质淡奶，奶香浓而不腻',
+                        address: '上海市普陀区真北路',
+                        shop: '王小虎夫妻店',
+                        shopId: '10333'
+                    }, {
+                        id: '12987126',
+                        name: '好滋好味鸡蛋仔',
+                        category: '江浙小吃、小吃零食',
+                        desc: '荷兰优质淡奶，奶香浓而不腻',
+                        address: '上海市普陀区真北路',
+                        shop: '王小虎夫妻店',
+                        shopId: '10333'
+                    }]
+                }
+            },
+            computed: {
+                data() {
+                    return this.$store.state.myData;
+                }
+            },
+            methods: {
+                handleSelectionChange(val) {
+                    this.multipleSelection = val;
+                },
+                handleClick(tab, event) {
+                    console.log(tab, event)
+                },
+                load() {
+                    // 调用载入族的接口
+                }
+            },
+            async mounted() {
+                // 拿到数据，并提交到数据仓库
+                
+            },
+        })
+
+    </script>
+</body>
+
+</html>
