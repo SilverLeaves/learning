@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+    <script src="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/index.js"></script>
+    <link href="http://pinzafile.oss-cn-shanghai.aliyuncs.com/vue-element/lib/theme-chalk/index.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+
+    <style>
+        .image {
+                width: 100%;
+                display: block;
+            }
+        </style>
+    <style>
+        .demo-table-expand {
+              font-size: 0;
+            }
+            .demo-table-expand label {
+              width: 90px;
+              color: #99a9bf;
+            }
+            .demo-table-expand .el-form-item {
+              margin-right: 0;
+              margin-bottom: 0;
+              width: 50%;
+            }
+          </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 显示结果 -->
+        <el-table ref="multipleTable" :data="data" tooltip-effect="dark" height="calc(100vh - 76px)" style="width: 100%;overflow: auto"
+            @selection-change="handleSelectionChange">
+            <el-table-column type="selection" width="55">
+            </el-table-column>
+            <el-table-column type="expand">
+                <template slot-scope="props">
+                    <el-form label-position="left" inline class="demo-table-expand">
+                        <el-form-item label="族名称名称">
+                            <span>{{ props.row.familyName }}</span>
+                        </el-form-item>
+                        <el-form-item label="UUID">
+                            <span>{{ props.row.familyUUID }}</span>
+                        </el-form-item>
+                        <el-form-item label="状态">
+                            <span>{{ props.row.state }}</span>
+                        </el-form-item>
+                    </el-form>
+                </template>
+            </el-table-column>
+
+            <!-- <el-table-column label="缩略图" width="240">
+                    <template slot-scope="scope">
+                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539857631264&di=8787dd6092b5c8c9dd48a7c44eaf277a&imgtype=0&src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F267f9e2f070828382fb60094b899a9014d08f1f3.jpg"
+                            class="image">
+                    </template>
+            </el-table-column> -->
+            <el-table-column prop="familyName" label="族名称" width="120">
+            </el-table-column>
+            <el-table-column label="类别" width="240">
+                <template slot-scope="scope">
+                    <el-cascader placeholder="试试搜索：指南" :options="options" filterable></el-cascader>
+                </template>
+            </el-table-column>
+            <el-table-column prop="familyUUID" label="UUID" show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="state" label="状态" show-overflow-tooltip>
+            </el-table-column>
+
+        </el-table>
+        <div style="margin-top: 20px">
+            <el-button @click="upload">确认上传</el-button>
+            <el-button>取消</el-button>
+        </div>
+    </div>
+
+    <script>
+        // 数据仓库
+        const store = new Vuex.Store({
+            state: {
+                myData: [],
+            },
+            mutations: {
+                update(state, payload) {
+                    state.myData = payload.data
+                },
+                updateResult(state, payload) {
+                    // console.log(payload.data);
+                    payload.data.forEach(element => {
+                        const index = state.myData.findIndex(ele => {
+                            // console.log(ele.familyUUID+element.familyUUID);
+                            return ele.familyUUID == element.familyUUID
+                        })
+                        if (index >= 0) {
+                            state.myData[index].state = "上传成功"
+                        } else {
+                            console.log("error:" + index + "未找到");
+                        }
+                    })
+                },
+            }
+        });
+        // Vue实例
+        let myApp = new Vue({
+            el: "#app",
+            store,
+            data() {
+                return {
+                    multipleSelection: [],
+                    options: [{
+                        value: 'zhinan',
+                        label: '指南',
+                        children: [{
+                            value: 'shejiyuanze',
+                            label: '设计原则',
+                            children: [{
+                                value: 'yizhi',
+                                label: '一致'
+                            }, {
+                                value: 'fankui',
+                                label: '反馈'
+                            }, {
+                                value: 'xiaolv',
+                                label: '效率'
+                            }, {
+                                value: 'kekong',
+                                label: '可控'
+                            }]
+                        }, {
+                            value: 'daohang',
+                            label: '导航',
+                            children: [{
+                                value: 'cexiangdaohang',
+                                label: '侧向导航'
+                            }, {
+                                value: 'dingbudaohang',
+                                label: '顶部导航'
+                            }]
+                        }]
+                    }],
+                }
+            },
+            computed: {
+                data() {
+                    return this.$store.state.myData;
+                }
+            },
+            methods: {
+                handleSelectionChange(val) {
+                    this.multipleSelection = val;
+                },
+                upload() {
+                    console.log("上传: " + JSON.stringify(this.multipleSelection));
+                    // 这个是真正调用上传的接口
+                    // uploadFamily(JSON.stringify(this.multipleSelection));
+                    // 这个是上传成功看示例的
+                    updateResult(JSON.stringify(this.multipleSelection))
+                }
+            }
+        })
+        // 被动更新数据的API
+        let update = (dataString) => {
+            try {
+                let data = JSON.parse(dataString)
+                data.forEach(element => {
+                    element.state = "等待确认"
+                });
+                store.commit({
+                    type: "update",
+                    data
+                })
+            } catch (error) {
+                console.error("更新上传结果错误" + error)
+            }
+        }
+        // 被动更新数据的API
+        let updateResult = (dataString) => {
+            try {
+                let data = JSON.parse(dataString)
+                store.commit({
+                    type: "updateResult",
+                    data
+                })
+            } catch (error) {
+                console.error("更新上传结果错误" + error)
+            }
+        }
+
+        // 调用示例
+        // 1.被动调用示例，传值进来
+        // update("mmp")
+        // 2.主动调用同步接口示例
+        // update(cefCompent.test("测试"));
+        // 3.主动调用异步接口示例
+        // updateAsync();
+
+        // 流程示例
+        console.log("————————————————————————————————————————————————————");
+        console.log("开始自动流程示例");
+        // 1.将要上传的族的信息
+        let family = [
+            {
+                familyName: "family1",
+                familyUUID: "1234567890",
+            },
+            {
+                familyName: "family2",
+                familyUUID: "xxxaxxxxxx",
+            },
+        ];
+        // 2.传递给页面
+        update(JSON.stringify(family))
+
+        // 3.页面调用上传
+        // 在Vue实例里面调用
+        // uploadFamily(JSON.stringify(selectedFamily));
+
+        // 4.上传成功的结果
+        let resultSuccess = [{
+            familyUUID: "xxxxxxxxxx",
+        }]
+        // 传递给页面
+        console.log("上传: " + JSON.stringify(resultSuccess));
+        updateResult(JSON.stringify(resultSuccess))
+        console.log("自动流程示例结束");
+        console.log("————————————————————————————————————————————————————");
+
+    </script>
+</body>
+
+</html>
