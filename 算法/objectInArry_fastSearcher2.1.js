@@ -49,7 +49,6 @@ let searcher = (Arr1, ArrS, name, fun) => {
         }
         Arr2[ele[name]].push(index);
     })
-
     ArrS.forEach((ele) => {
         Arr2[ele].forEach((ele)=>{
             fun(arr1[ele])
