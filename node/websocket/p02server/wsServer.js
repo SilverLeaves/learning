@@ -1,18 +1,14 @@
-var ws = require("nodejs-websocket")
+var http = require("http");
+var io = require("socket.io")(http);
 
-// Scream server example: "hi" -> "HI!!!"
-var server = ws.createServer(function (conn) {
-	console.log("New connection")
-	conn.on("text", function (str) {
-		console.log("Received "+str)
-		conn.sendText(str.toUpperCase()+"!!!")
-	})
-	conn.on("close", function (code, reason) {
-		console.log("Connection closed")
-    })
-    
-    conn.on("error",function(err){
-        console.log("handle err");
-        console.log(err);
-    })
-}).listen(8001)
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/index.html");
+});
+
+io.on("connection", function(socket) {
+  console.log("a user connected");
+});
+
+http.listen(3000, function() {
+  console.log("listening on *:3000");
+});
