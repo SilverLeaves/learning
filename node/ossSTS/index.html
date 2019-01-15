@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="referrer" content="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <title>oss上传</title>
+  </head>
+  <body>
+    <div id="oss">
+      <h1>{{ title }}</h1>
+      <el-upload
+        action=""
+        :data="file"
+        :http-request="httpRequest"
+        drag
+        list-type="picture-card"
+      >
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或 <em>点击上传</em></div>
+      </el-upload>
+      <el-input v-model="fileLink" placeholder="oss访问路径"></el-input>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="./aliyun-oss-sdk.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#oss",
+      data: {
+        title: "oss上传",
+        oss: {},
+        file: null,
+        fileLink: null
+      },
+      methods: {
+        onSuccess: function(res, file, filelist) {
+          if (res.statusCode === 200) {
+            vm.fileLink = vm.oss.host + res.result.filename;
+          }
+        },
+        async httpRequest(option) {
+          try {
+            await this.getOssSign();
+            let file = option.file;
+            console.log("开始上传");
+            // 直接put没有进度条，100-200M的小文件应该妥妥的。
+            let result = await this.oss.put("object-key", file, {});
+            console.log(result);
+          } catch (error) {
+            console.error(error);
+          }
+        },
+        getOssSign: async function() {
+          try {
+            let response = await axios.get("http://127.0.0.1:7001/getStsToken");
+            let token = response.data.stsToken;
+            console.log(token);
+            token.region = "oss-cn-hangzhou";
+            token.bucket = "officesite";
+            // this.oss = new OSS(token);
+            this.oss = new OSS(token);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      },
+      mounted: function() {
+        // this.getOssSign();
+      }
+    });
+  </script>
+</html>

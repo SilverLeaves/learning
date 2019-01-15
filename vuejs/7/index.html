@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>模板学习</h1>
     //得到一个文件，并不一定需要一个文件名
-    <script src="hhttps://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+    <script src="hhttps://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
 
     <div id="app">
-            <ol>
-              <todo-item
-                v-for="item in todos"
-                v-bind:todo="item"
-                v-bind:key="item.id">
-              </todo-item>
-            </ol>
-          </div>
-        <script>
-           Vue.component('todo-item', {
-            props: ['todo'],
-            template: '<li>{{ todo.text }}</li>'
-          })
-          
-          var app7 = new Vue({
-            el: '#app',
-            data: {
-              todos: [
-                { id: 0, text: '起床' },
-                { id: 1, text: '早点' },
-                { id: 2, text: '工作' },
-                { id: 3, text: '晚饭' },
-                { id: 4, text: '睡觉' }
-              ]
-            }
-          })
-        </script>
-</body>
+      <ol>
+        <todo-item
+          v-for="item in todos"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        >
+        </todo-item>
+      </ol>
+    </div>
+    <script>
+      Vue.component("todo-item", {
+        props: ["todo"],
+        template: "<li>{{ todo.text }}</li>"
+      });
 
+      var app7 = new Vue({
+        el: "#app",
+        data: {
+          todos: [
+            { id: 0, text: "起床" },
+            { id: 1, text: "早点" },
+            { id: 2, text: "工作" },
+            { id: 3, text: "晚饭" },
+            { id: 4, text: "睡觉" }
+          ]
+        }
+      });
+    </script>
+  </body>
 </html>
