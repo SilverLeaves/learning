@@ -40,10 +40,10 @@ function test(data: any[], net: Brain.NeuralNetwork) {
   };
 }
 
-// 实例一个神经网络
+// 创建一个神经网络
 let net = new Brain.NeuralNetwork({ hiddenLayers: [9, 2] });
 
-// 获取训练数据集和测试数据集
+// 创建训练数据集和测试数据集
 const trainData = getRandomData(20);
 const testData = getRandomData(1000000);
 
