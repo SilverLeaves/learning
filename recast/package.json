@@ -1,0 +1,14 @@
+{
+  "name": "recast",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev":"ts-node index.ts"
+  },
+  "dependencies": {
+    "recast": "^0.18.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}
