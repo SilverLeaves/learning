@@ -7,7 +7,7 @@
     "dev": "tsnd  index.ts"
   },
   "dependencies": {
-    "apollo-server": "^2.8.2",
+    "apollo-server": "^2.14.2",
     "graphql": "^14.4.2",
     "ts-node": "^8.3.0",
     "ts-node-dev": "^1.0.0-pre.43",
